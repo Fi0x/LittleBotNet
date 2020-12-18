@@ -7,4 +7,5 @@ include_directories(src/main)
 
 add_executable(LittleBotNet
         src/main/main.c
-        src/main/main.h)
+        src/main/client/clientStorage.c
+        )

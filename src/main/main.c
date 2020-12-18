@@ -2,9 +2,8 @@
 // Created by fi0x on 18.12.20.
 //
 
-#include "main.h"
-#include <stdio.h>
+#include "client/clientStorage.h"
 
-int main() {
-    printf("Test");
+int main()
+{
 }
