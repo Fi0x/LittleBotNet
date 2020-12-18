@@ -2,7 +2,7 @@
 name: Bug report
 about: Create a report about any bug you encountered
 title: New Bug
-labels: ''
+labels: "⚠️ bug ⚠️, new"
 assignees: Fi0x
 
 ---
