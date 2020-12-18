@@ -9,10 +9,12 @@
 
 typedef struct KnownClient
 {
-    struct KnownClient *prev;
-    struct KnownClient *next;
-    char clientID[32];
-    int clientIP;
+    struct KnownClient *prev;   //Previous client in list
+    struct KnownClient *next;   //Next client in list
+    char clientID[32];          //Random ID to identify client
+    int clientIP;               //Store the IP of the client
+    int lastConnection;         //Stores timestamp of last time client was online
 } KnownClient;
 
-void addClientToKnownClients();
+int addClientToKnownClients(KnownClient *client);   //Add a new client to the list of known clients
+int removeLeastActiveClient();                      //Remove the client with the oldes "lastConnection" from the known clients
