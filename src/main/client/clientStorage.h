@@ -13,7 +13,7 @@ typedef struct KnownClient
     struct KnownClient *next;   //Next client in list
     char clientID[32];          //Random ID to identify client
     int clientIP;               //Store the IP of the client
-    int lastConnection;         //Stores timestamp of last time client was online
+    long lastConnection;         //Stores timestamp of last time client was online
 } KnownClient;
 
 int addClientToKnownClients(KnownClient *client);   //Add a new client to the list of known clients

@@ -4,6 +4,7 @@
 
 #include "clientStorage.h"
 #include "stdio.h"
+#include "string.h"
 
 static KnownClient *FirstKnownClient = NULL;
 
@@ -32,7 +33,37 @@ int addClientToKnownClients(KnownClient *client)
     return 0;
 }
 
+int removeClientFromList(char[32] clientID)
+{
+    KnownClient *iter = FirstKnownClient;
+    while (iter != NULL)
+    {
+        if(strcmp(clientID, iter->clientID))
+        {
+            if(iter->prev != NULL)
+            {
+                iter->prev->next = iter->next;
+            }
+            if(iter->next != NULL)
+            {
+                iter->next->prev = iter->prev;
+            }
+            return 0;
+        }
+    }
+    return -2;
+}
+
 int removeLeastActiveClient()
 {
-    //TODO: Iterate list and remove client with oldest "lastConnection"
+    if(FirstKnownClient == NULL) return -1;
+    KnownClient *oldestClient = FirstKnownClient;
+    KnownClient *iter = FirstKnownClient;
+    while (iter != NULL)
+    {
+        if(iter->lastConnection < oldestClient->lastConnection) oldestClient = iter;
+        iter = iter->next;
+    }
+
+    return removeClientFromList(oldestClient->clientID);
 }
